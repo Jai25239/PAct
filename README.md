@@ -17,9 +17,9 @@ This repository currently focuses on inference with the `PActPipeline`, while th
 | Stage | Deliverable | Target Date | Notes |
 | --- | --- | --- | --- |
 | Inference Release | Cleaned `infer_imgs.py`, pretrained checkpoints, sample configs. | 2026-02-07 | ✅ available now. |
-| Dataset Preprocessing | Detailed docs + scripts for preparing datasets +  mask labeling (VLM+SAM). | 2026-05-01 | In progress. |
-| Training Stage 1 | Sparse-structure (SS-Flow) training scripts + configs. | 2026-05-01 | In progress.  |
-| Training Stage 2 | SLAT articulation training pipeline + evaluation metrics. | 2026-05-01 |In progress.  |
+| Dataset Preprocessing | Detailed docs + scripts for preparing datasets +  mask labeling (VLM+SAM). | 2026-07-15 | In progress. |
+| Training Stage 1 | Sparse-structure (SS-Flow) training scripts + configs. | 2026-07-15 | In progress.  |
+| Training Stage 2 | SLAT articulation training pipeline + evaluation metrics. | 2026-07-15 |In progress.  |
 
 
 Dates reflect our best-effort plan; we will update this table and tag releases in the repo as milestones land.
@@ -32,10 +32,11 @@ Dates reflect our best-effort plan; we will update this table and tag releases i
 	git clone https://github.com/PAct-project/PAct.git
 	cd PAct
 	```
-2. **Conda environment (recommended, we follow the TRELLIS repo)**
+2. **Conda environment (recommended, we follow the TRELLIS and OmniPart repo)**
 	```bash
 	conda env create -f PAct_env.yml
 	conda activate PAct
+    pip install git+https://github.com/facebookresearch/detectron2.git
 	```
 
 ## 3. Launch Gradio Demo
