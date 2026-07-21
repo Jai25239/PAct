@@ -1,9 +1,28 @@
 # PAct: Part-Decomposed Single-View Articulated Object Generation
-###  Anonymous Authors
-<!-- ## [Project page (preparing)](https://pact-project.github.io/) | [HuggingFaceDemo](https://pact-project.github.io/) | -->
-<a href="https://pact-project.github.io/"><img src="https://img.shields.io/badge/Project-Website-blue" alt="Project Page"></a>
-<a href="https://huggingface.co/PAct000/PAct"><img src="https://img.shields.io/badge/Hugging%20Face-Model-yellow" alt="Hugging Face"></a>
-<a href="https://huggingface.co/spaces/PAct000/PAct"><img src="https://img.shields.io/badge/Hugging%20Face-Demo-blueviolet"></a>
+
+> **Generate an articulated, simulation-ready 3D object from a single-view input.**
+>
+> *SIGGRAPH Asia 2026 · Conditionally Accepted*
+
+**Authors:**
+[Qingming Liu](https://github.com/Mobiuslqm)<sup>1,2</sup>,
+[Xinyue Yao](https://scholar.google.com/citations?user=ZOf_esUAAAAJ&hl=en)<sup>1</sup>,
+[Shuyuan Zhang](https://sanbingyouyong.github.io/)<sup>1</sup>,
+[Yueci Deng](https://github.com/yuecideng)<sup>1,2</sup>,
+[Guiliang Liu](https://guiliang.me)<sup>1</sup>,
+[Zhen Liu](https://itszhen.com)<sup>1,†</sup>,
+[Kui Jia](http://kuijia.site)<sup>1,2</sup>
+
+<sup>1</sup>The Chinese University of Hong Kong, Shenzhen &nbsp;&nbsp; <sup>2</sup>DexForce Technology
+
+<sup>†</sup>Corresponding author
+
+<a href="https://arxiv.org/pdf/2602.14965"><img src="https://img.shields.io/badge/Paper-PDF-b31b1b" alt="Paper"></a>
+<a href="https://arxiv.org/abs/2602.14965"><img src="https://img.shields.io/badge/arXiv-2602.14965-b31b1b" alt="arXiv"></a>
+<a href="https://github.com/Mobiuslqm/PAct"><img src="https://img.shields.io/badge/Code-GitHub-181717" alt="Code"></a>
+<a href="https://huggingface.co/spaces/PAct000/PAct"><img src="https://img.shields.io/badge/Hugging%20Face-Demo-blueviolet" alt="Demo"></a>
+<a href="https://huggingface.co/PAct000/PAct"><img src="https://img.shields.io/badge/Hugging%20Face-Model-yellow" alt="Model"></a>
+<a href="#5-citation"><img src="https://img.shields.io/badge/BibTeX-Cite-blue" alt="BibTeX"></a>
 
 <!-- <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-green" alt="License"></a> -->
 ![teaser](assets/doc/teaser.jpg)
@@ -115,14 +134,14 @@ TBD
 
 ## 5. Citation
 
-If you build upon this work, please cite the PAct paper / project page (bibtex to be added with the formal release):
-```
-@article{xxx2026PAct,
+If you build upon this work, please cite the PAct paper:
+```bibtex
+@article{liu2026pact,
     title   = {PAct: Part-Decomposed Single-View Articulated Object Generation},
-    author  = {xxx},
-    journal = {xxx},
+    author  = {Liu, Qingming and Yao, Xinyue and Zhang, Shuyuan and Deng, Yueci and Liu, Guiliang and Liu, Zhen and Jia, Kui},
+    journal = {arXiv preprint arXiv:2602.14965},
     year    = {2026}
-}.
+}
 ```
 
 
