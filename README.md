@@ -36,9 +36,9 @@ This repository currently focuses on inference with the `PActPipeline`, while th
 | Stage | Deliverable | Target Date | Notes |
 | --- | --- | --- | --- |
 | Inference Release | Cleaned `infer_imgs.py`, pretrained checkpoints, sample configs. | 2026-02-07 | ✅ available now. |
-| Dataset Preprocessing | Detailed docs + scripts for preparing datasets +  mask labeling (VLM+SAM). | 2026-07-15 | In progress. |
-| Training Stage 1 | Sparse-structure (SS-Flow) training scripts + configs. | 2026-07-15 | In progress.  |
-| Training Stage 2 | SLAT articulation training pipeline + evaluation metrics. | 2026-07-15 |In progress.  |
+| Dataset Preprocessing | Detailed docs + scripts for preparing datasets +  mask labeling (VLM+SAM). | 2026-08-20 | In progress. |
+| Training Stage 1 | Sparse-structure (SS-Flow) training scripts + configs. | 2026-08-20 | In progress.  |
+| Training Stage 2 | SLAT articulation training pipeline + evaluation metrics. | 2026-08-20 |In progress.  |
 
 
 Dates reflect our best-effort plan; we will update this table and tag releases in the repo as milestones land.
