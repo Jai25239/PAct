@@ -17,6 +17,7 @@
 
 <sup>†</sup>Corresponding author
 
+<a href="https://pact-project.github.io/"><img src="https://img.shields.io/badge/Project-Page-1f6feb" alt="Project Page"></a>
 <a href="https://arxiv.org/pdf/2602.14965"><img src="https://img.shields.io/badge/Paper-PDF-b31b1b" alt="Paper"></a>
 <a href="https://arxiv.org/abs/2602.14965"><img src="https://img.shields.io/badge/arXiv-2602.14965-b31b1b" alt="arXiv"></a>
 <a href="https://github.com/Mobiuslqm/PAct"><img src="https://img.shields.io/badge/Code-GitHub-181717" alt="Code"></a>
