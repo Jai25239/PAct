@@ -44,6 +44,10 @@ the raw-data preprocessing workflow needed to construct their inputs.
 
 Dates reflect our best-effort plan; we will update this table and tag releases in the repo as milestones land.
 
+Thanks to Codex and Kimi Coding Agent for helping us refactor the code and accelerate the open-sourcing process.
+
+We also apologize for the repeated delays—sometimes chronic procrastination gets the better of us, lol.
+
 
 ## 2. Environment Setup
 
@@ -381,6 +385,7 @@ If you build upon this work, please cite the PAct paper:
 
 
 And we sincerely thank the authors of TRELLIS and OmniPart, whose codes were used in our work.
+
 ```
 @article{xiang2024structured,
     title   = {Structured 3D Latents for Scalable and Versatile 3D Generation},
