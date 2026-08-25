@@ -1,0 +1,144 @@
+{
+  "stage": "structured_latent",
+  "models": {
+    "denoiser": {
+      "name": "SLatFlowModel",
+      "args": {
+        "resolution": 64,
+        "in_channels": 9,
+        "out_channels": 9,
+        "model_channels": 1024,
+        "cond_channels": 1024,
+        "num_blocks": 24,
+        "num_heads": 16,
+        "mlp_ratio": 4,
+        "patch_size": 2,
+        "num_io_res_blocks": 2,
+        "io_block_channels": [
+          128
+        ],
+        "pe_mode": "ape",
+        "qk_rms_norm": true,
+        "use_fp16": true,
+        "use_checkpoint": true
+      }
+    },
+    "Articulation": {
+      "name": "ArticulationRegressionHead",
+      "args": {
+        "input_layer_num": 2,
+        "out_layer_num": 3,
+        "feat_dim": 1024,
+        "out_channel": 24,
+        "num_heads": 4,
+        "mlp_ratio": 2,
+        "num_arti_blocks": 0,
+        "use_skip_connection": false,
+        "use_checkpoint": true,
+        "share_mod": false,
+        "qk_rms_norm": true,
+        "qk_rms_norm_cross": false,
+        "use_art_as_input": false,
+        "use_fp16": true
+      }
+    }
+  },
+  "dataset": {
+    "name": "ImageConditionedArtiSLat",
+    "args": {
+      "latent_model": "dinov2_vitl14_reg_slat_enc_swin8_B_64l8_fp16",
+      "split_info_json": null,
+      "is_predict_arti_info": true,
+      "data_cache_cond": true,
+      "image_size": 518,
+      "vis_video": false,
+      "adding_slat_noise": false,
+      "normalization": {
+        "mean": [
+          -2.1687545776367188,
+          -0.004347046371549368,
+          -0.13352349400520325,
+          -0.08418072760105133,
+          -0.5271206498146057,
+          0.7238689064979553,
+          -1.1414450407028198,
+          1.2039363384246826
+        ],
+        "std": [
+          2.377650737762451,
+          2.386378288269043,
+          2.124418020248413,
+          2.1748552322387695,
+          2.663944721221924,
+          2.371192216873169,
+          2.6217446327209473,
+          2.684523105621338
+        ]
+      },
+      "pretrained_slat_dec": "microsoft/TRELLIS-image-large/ckpts/slat_dec_gs_swin8_B_64l8gs32_fp16",
+      "pretrained_slat_dec_mesh": "microsoft/TRELLIS-image-large/ckpts/slat_dec_mesh_swin8_B_64l8m256c_fp16"
+    }
+  },
+  "trainer": {
+    "name": "ImageConditionedSparseFlowMatchingCFGTrainer_Articulation",
+    "args": {
+      "lora_setting": {
+        "use_lora": true,
+        "name": "denoiser",
+        "args": {
+          "r": 16,
+          "lora_alpha": 32,
+          "init_lora_weights": "gaussian",
+          "target_modules": [
+            "to_qkv",
+            "to_q",
+            "to_kv",
+            "to_out"
+          ]
+        }
+      },
+      "masked_articulation_loss": true,
+      "arti_info_diffusion": false,
+      "finetune_ckpt": null,
+      "max_steps": 80010,
+      "model_version": "Arti_stage2_flow",
+      "batch_size_per_gpu": 8,
+      "batch_split": 4,
+      "num_workers": 4,
+      "optimizer": {
+        "name": "AdamW",
+        "args": {
+          "lr": 0.0001,
+          "weight_decay": 0
+        }
+      },
+      "ema_rate": [
+        0.9999
+      ],
+      "fp16_mode": "inflat_all",
+      "fp16_scale_growth": 0.001,
+      "grad_clip": {
+        "name": "AdaptiveGradClipper",
+        "args": {
+          "max_norm": 1,
+          "clip_percentile": 95
+        }
+      },
+      "i_print": 50,
+      "i_log": 50,
+      "i_sample": 100,
+      "i_save": 600,
+      "i_validate": 1000,
+      "p_uncond": 0.1,
+      "t_schedule": {
+        "name": "logitNormal",
+        "args": {
+          "mean": 1,
+          "std": 1
+        }
+      },
+      "sigma_min": 0.00001,
+      "image_cond_model": "dinov2_vitl14_reg"
+    }
+  }
+}

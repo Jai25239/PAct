@@ -1,0 +1,72 @@
+{
+  "stage": "sparse_structure",
+  "models": {
+    "denoiser": {
+      "name": "PartBasedSparseStructureFlowModel",
+      "args": {
+        "resolution": 4,
+        "in_channels": 2,
+        "out_channels": 2,
+        "model_channels": 32,
+        "cond_channels": 32,
+        "num_blocks": 2,
+        "num_heads": 4,
+        "mlp_ratio": 2,
+        "patch_size": 1,
+        "pe_mode": "ape",
+        "qk_rms_norm": true,
+        "use_fp16": false,
+        "use_checkpoint": false,
+        "enable_part_embedding": true,
+        "enable_local_cross_attn": true,
+        "enable_global_cross_attn": true,
+        "global_attn_block_ids": [
+          0
+        ]
+      }
+    }
+  },
+  "dataset": {
+    "name": "synthetic",
+    "args": {}
+  },
+  "trainer": {
+    "name": "PartBasedImageConditionedFlowMatchingCFGTrainer",
+    "args": {
+      "finetune_ckpt": null,
+      "lora_setting": {
+        "use_lora": false,
+        "name": "denoiser",
+        "args": {}
+      },
+      "max_steps": 1,
+      "model_version": "stage1_partbased_ss",
+      "batch_size_per_gpu": 2,
+      "batch_split": 1,
+      "num_workers": 0,
+      "optimizer": {
+        "name": "AdamW",
+        "args": {
+          "lr": 0.001
+        }
+      },
+      "ema_rate": [
+        0.9
+      ],
+      "fp16_mode": null,
+      "grad_clip": 1,
+      "i_print": 1,
+      "i_log": 1,
+      "i_sample": 1000,
+      "i_save": 1,
+      "i_validate": -1,
+      "p_uncond": 0.1,
+      "t_schedule": {
+        "name": "uniform",
+        "args": {}
+      },
+      "sigma_min": 0.00001,
+      "image_cond_model": "dinov2_vitl14_reg"
+    }
+  }
+}

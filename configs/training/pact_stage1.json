@@ -1,0 +1,111 @@
+{
+  "stage": "sparse_structure",
+  "models": {
+    "denoiser": {
+      "name": "PartBasedSparseStructureFlowModel",
+      "args": {
+        "resolution": 16,
+        "in_channels": 8,
+        "out_channels": 8,
+        "model_channels": 1024,
+        "cond_channels": 1024,
+        "num_blocks": 24,
+        "num_heads": 16,
+        "mlp_ratio": 4,
+        "patch_size": 1,
+        "pe_mode": "ape",
+        "qk_rms_norm": true,
+        "use_fp16": true,
+        "use_checkpoint": true,
+        "enable_part_embedding": true,
+        "enable_local_cross_attn": true,
+        "enable_global_cross_attn": true,
+        "global_attn_block_ids": [
+          0,
+          2,
+          4,
+          6,
+          8,
+          10,
+          12,
+          14,
+          16,
+          18,
+          20,
+          22
+        ]
+      }
+    }
+  },
+  "dataset": {
+    "name": "ImageConditionedPartBasedSparseStructureLatent",
+    "args": {
+      "latent_model": "ss_enc_conv3d_16l8_fp16",
+      "split_info_json": null,
+      "is_sorted_mask_bottom_up": false,
+      "image_size": 518,
+      "min_aesthetic_score": 4.5,
+      "pretrained_ss_dec": "microsoft/TRELLIS-image-large/ckpts/ss_dec_conv3d_16l8_fp16"
+    }
+  },
+  "trainer": {
+    "name": "PartBasedImageConditionedFlowMatchingCFGTrainer",
+    "args": {
+      "finetune_ckpt": null,
+      "lora_setting": {
+        "use_lora": false,
+        "name": "denoiser",
+        "args": {
+          "r": 16,
+          "lora_alpha": 32,
+          "init_lora_weights": "gaussian",
+          "target_modules": [
+            "to_qkv",
+            "to_q",
+            "to_kv",
+            "to_out"
+          ]
+        }
+      },
+      "max_steps": 1000000,
+      "model_version": "stage1_partbased_ss",
+      "batch_size_per_gpu": 8,
+      "batch_split": 2,
+      "num_workers": 4,
+      "optimizer": {
+        "name": "AdamW",
+        "args": {
+          "lr": 0.0001,
+          "weight_decay": 0
+        }
+      },
+      "ema_rate": [
+        0.9999
+      ],
+      "fp16_mode": "inflat_all",
+      "fp16_scale_growth": 0.001,
+      "grad_clip": {
+        "name": "AdaptiveGradClipper",
+        "args": {
+          "max_norm": 1,
+          "clip_percentile": 95
+        }
+      },
+      "i_print": 50,
+      "i_log": 50,
+      "i_sample": 10000,
+      "i_save": 1000,
+      "i_validate": -1,
+      "p_uncond": 0.1,
+      "t_schedule": {
+        "name": "logitNormal",
+        "args": {
+          "mean": 1,
+          "std": 1
+        }
+      },
+      "sigma_min": 0.00001,
+      "image_cond_model": "dinov2_vitl14_reg"
+    }
+  }
+}

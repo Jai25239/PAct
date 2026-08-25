@@ -23,7 +23,6 @@ def __from_env():
         ATTN = env_sparse_attn
         
     print(f"[SPARSE] Backend: {BACKEND}, Attention: {ATTN}")
-    print(f"package_x __init__ executed in PID={os.getpid()}")
         
 
 __from_env()

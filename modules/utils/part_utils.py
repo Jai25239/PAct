@@ -417,7 +417,7 @@ def sort_bboxes_by_zyx(bbox_list):
 def prepaer_parts_meta(
     base_dir,
     part_info_path="object_merge_fixed.json",
-    transform_info_path="trellis_part_preprocess/render_merged_fixed_eevee/full/transforms.json",
+    transform_info_path="trellis_part_preprocess/render_merged_fixed_cycles/full/transforms.json",
     verbose=False,
 ):
 

@@ -8,7 +8,7 @@ from .components import (
     StandardDatasetBase,
     TextConditionedMixin,
     ImageConditionedMixin,
-    # ImageConditionedMixin_PartNet,
+    ImageConditionedMixin_PartNet,
     StandardDatasetBase_Part,
 )
 from .sparse_structure import SparseStructure_PartNet
@@ -1603,9 +1603,7 @@ class ImageConditionedSLat(ImageConditionedMixin, SLat):
     pass
 
 
-# class ImageConditioned_ArtiSLat(ImageConditionedMixin_PartNet, Arti_SLat):
-#     """
-#     Image conditioned structured latent dataset
-#     """
+class ImageConditionedArtiSLat(ImageConditionedMixin_PartNet, Arti_SLat):
+    """Image-conditioned articulated structured-latent training dataset."""
 
-#     pass
+    pass

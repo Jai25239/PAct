@@ -1,0 +1,17 @@
+PAct
+Copyright (c) 2026 PAct Authors and contributors
+
+This project contains code derived from TRELLIS
+(https://github.com/microsoft/TRELLIS), distributed under the MIT License.
+
+Dataset conditioning code is adapted from SINGAPO
+(https://github.com/3dlg-hcvc/singapo), distributed under the MIT License.
+
+This project contains code derived from OmniPart
+(https://github.com/VAST-AI-Research/OmniPart), distributed under the MIT
+License. PAct model components also build on that research implementation;
+deprecated experiments and evaluation-only code were not included.
+
+Runtime dependencies and pretrained models remain subject to their respective
+licenses. In particular, users must review the licenses for Blender/BlenderProc,
+DINOv2, TRELLIS weights, and any source dataset before redistribution.

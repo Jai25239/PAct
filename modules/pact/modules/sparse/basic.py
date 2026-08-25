@@ -23,6 +23,23 @@ from . import BACKEND, DEBUG
 SparseTensorData = None # Lazy import
 
 
+def _get_sparse_tensor_data_class():
+    """Initialize the selected backend after construction or unpickling."""
+    global SparseTensorData
+    if SparseTensorData is None:
+        import importlib
+
+        if BACKEND == "torchsparse":
+            SparseTensorData = importlib.import_module("torchsparse").SparseTensor
+        elif BACKEND == "spconv":
+            SparseTensorData = importlib.import_module(
+                "spconv.pytorch"
+            ).SparseConvTensor
+        else:
+            raise ValueError(f"Unsupported sparse backend: {BACKEND}")
+    return SparseTensorData
+
+
 __all__ = [
     'SparseTensor',
     'sparse_batch_broadcast',
@@ -56,12 +73,7 @@ class SparseTensor:
     def __init__(self, *args, **kwargs):
         # Lazy import of sparse tensor backend to avoid circular imports and improve startup time
         global SparseTensorData
-        if SparseTensorData is None:
-            import importlib
-            if BACKEND == 'torchsparse':
-                SparseTensorData = importlib.import_module('torchsparse').SparseTensor
-            elif BACKEND == 'spconv':
-                SparseTensorData = importlib.import_module('spconv.pytorch').SparseConvTensor
+        SparseTensorData = _get_sparse_tensor_data_class()
         
         # print(SparseTensorData)
         # exit(0)
@@ -340,6 +352,8 @@ class SparseTensor:
         Create a new sparse tensor with the specified features and optionally new coordinates.
         Preserves other properties like stride, spatial range, and caches.
         """
+        global SparseTensorData
+        SparseTensorData = _get_sparse_tensor_data_class()
         new_shape = [self.shape[0]]
         new_shape.extend(feats.shape[1:])
         if BACKEND == 'torchsparse':

@@ -43,6 +43,14 @@ if __name__ == "__main__":
     parser.add_argument(
         "--config", type=str, required=False, help="Experiment config file"
     )
+    parser.add_argument(
+        "--model",
+        default="PAct000/PAct",
+        help="Local exported PAct pipeline directory or Hugging Face repository",
+    )
+    parser.add_argument(
+        "--revision", default="main", help="Hugging Face model revision"
+    )
     parser.add_argument("--test_only", action="store_true", help="Only run testing")
     parser.add_argument("--data_dir", type=str, required=True, help="Output directory")
     parser.add_argument("--outdir", type=str, required=True, help="Output directory")
@@ -197,7 +205,7 @@ if __name__ == "__main__":
     cfg.update(args.__dict__)
     # cfg.update(config)
 
-    pact_pipeline = PActPipeline.from_pretrained("PAct000/PAct", revision="main")
+    pact_pipeline = PActPipeline.from_pretrained(args.model, revision=args.revision)
 
     articulation_ani_videos = []
     exploded_parts_videos = []

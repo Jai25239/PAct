@@ -7,9 +7,11 @@ tmp/
 debug_images/
 dataset
 data
+*.pyc
 ./assets/*
 ./vscode/*
 ./Datasets/*
 preprocesss
 outputs
 *_preview_mask.png
+Datasets/
