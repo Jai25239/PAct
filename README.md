@@ -2,7 +2,7 @@
 
 > **Generate an articulated, simulation-ready 3D object from a single-view input.**
 >
-> *SIGGRAPH Asia 2026 · Conditionally Accepted*
+> *ACM SIGGRAPH Asia 2026 · Accepted*
 
 **Authors:**
 [Qingming Liu](https://github.com/Mobiuslqm)<sup>1,2</sup>,
