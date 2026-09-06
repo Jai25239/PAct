@@ -186,7 +186,7 @@ def vis_mask_on_img(img, mask):
 
 
 def get_random_color(index: Optional[int] = None, use_float: bool = False):
-    # some pleasing colors
+    # some pleasing colors samples
     # matplotlib.colormaps['Set3'].colors + matplotlib.colormaps['Set2'].colors + matplotlib.colormaps['Set1'].colors
     palette = np.array(
         [

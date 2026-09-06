@@ -10,7 +10,7 @@ from PIL import Image
 
 os.environ["SPCONV_ALGO"] = "native"
 from huggingface_hub import hf_hub_download
-
+from huggingface_hub import hf_hub_download
 from app_utils import (
     generate_parts,
     prepare_models,
@@ -245,7 +245,9 @@ with gr.Blocks(title="PAct", css=CUSTOM_CSS) as demo:
 
 if __name__ == "__main__":
     os.makedirs("ckpt", exist_ok=True)
-    sam_ckpt_path = "ckpt/sam_vit_h_4b8939.pth"
+    sam_ckpt_path = hf_hub_download(repo_id="omnipart/OmniPart_modules", filename="sam_vit_h_4b8939.pth", local_dir="ckpt")
+    
+    # sam_ckpt_path = "ckpt/sam_vit_h_4b8939.pth"
     pipeline_path = os.environ.get(
         "PACT_PIPELINE_PATH",
         "PAct000/PAct",
