@@ -277,7 +277,7 @@ if __name__ == "__main__":
     ### Real-Dataset
 
     img_dataset = getattr(datasets, "ImageConditioned_dataset")(
-        "assets/real_world_examples",
+        cfg.data_dir,
     )
     dataloader = DataLoader(
         copy.deepcopy(img_dataset),
